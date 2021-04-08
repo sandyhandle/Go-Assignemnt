@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/sandyhandle/Go-Assignemnt/tree/master/chat"
+	"github.com/tutorialedge/go-grpc-tutorial/chat"
 	"google.golang.org/grpc"
 )
 
@@ -16,11 +16,12 @@ func main() {
 
 	s := chat.Server{}
 
-	chat.RegisterChatServiceServer(grpcServer, &s)
-
 	grpcServer := grpc.NewServer()
+
+	chat.RegisterChatServiceServer(grpcServer, &s)
 
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve gRPC server over port 9000: %v", err)
 	}
+
 }
