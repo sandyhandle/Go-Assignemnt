@@ -13,6 +13,10 @@ func main() {
 		log.Fatalf("Failed to listen on port 9000: %v", err)
 	}
 
+	s := chat.Server{}
+
+	chat.RegisterChatServiceServer(grpcServer, &s)
+
 	grpcServer := grpc.NewServer()
 
 	if err := grpcServer.Serve(lis); err != nil {
