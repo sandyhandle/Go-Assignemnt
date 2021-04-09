@@ -9,9 +9,9 @@ import (
 )
 
 func main() {
-	lis, err := net.Listen("tcp", ":9000")
+	lis, err := net.Listen("tcp", ":9001")
 	if err != nil {
-		log.Fatalf("Failed to listen on port 9000: %v", err)
+		log.Fatalf("Failed to listen on port 9001: %v", err)
 	}
 
 	s := chat.Server{}
@@ -21,7 +21,7 @@ func main() {
 	chat.RegisterChatServiceServer(grpcServer, &s)
 
 	if err := grpcServer.Serve(lis); err != nil {
-		log.Fatalf("Failed to serve gRPC server over port 9000: %v", err)
+		log.Fatalf("Failed to serve gRPC server over port 9001: %v", err)
 	}
 
 }
